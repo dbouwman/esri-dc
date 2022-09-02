@@ -3,6 +3,12 @@
   "version": 2,
   "projects": {
     "arcgis-hub": "apps/arcgis-hub",
-    "arcgis-hub-e2e": "apps/arcgis-hub-e2e"
+    "arcgis-hub-e2e": "apps/arcgis-hub-e2e",
+    "arcgis-sites": "apps/arcgis-sites",
+    "arcgis-sites-e2e": "apps/arcgis-sites-e2e",
+    
+    "hubnx-components": "libs/hubnx-components",
+    "hubnx-components-react": "libs/hubnx-components-react",
+    "hubnx-js": "libs/hubnx-js"
   }
 }

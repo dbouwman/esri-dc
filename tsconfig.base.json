@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@esri-dc/hubnx-components": ["dist/libs/hubnx-components"],
+      "@esri-dc/hubnx-components-react": [
+        "libs/hubnx-components-react/src/index.ts"
+      ],
+      "@esri-dc/hubnx-components/*": [
+        "dist/libs/hubnx-components/dist/components/*"
+      ],
+      "@esri-dc/hubnx-components/loader": ["dist/libs/hubnx-components/loader"],
+      "@esri-dc/hubnx-js": ["libs/hubnx-js/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

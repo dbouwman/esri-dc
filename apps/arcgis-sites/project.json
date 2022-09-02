@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/arcgis-sites/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/arcgis-sites",
+        "index": "apps/arcgis-sites/src/index.html",
+        "baseHref": "/",
+        "main": "apps/arcgis-sites/src/main.tsx",
+        "polyfills": "apps/arcgis-sites/src/polyfills.ts",
+        "tsConfig": "apps/arcgis-sites/tsconfig.app.json",
+        "assets": [
+          "apps/arcgis-sites/src/favicon.ico",
+          "apps/arcgis-sites/src/assets"
+        ],
+        "styles": ["apps/arcgis-sites/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/arcgis-sites/src/environments/environment.ts",
+              "with": "apps/arcgis-sites/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "arcgis-sites:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "arcgis-sites:build:development"
+        },
+        "production": {
+          "buildTarget": "arcgis-sites:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/arcgis-sites/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/arcgis-sites"],
+      "options": {
+        "jestConfig": "apps/arcgis-sites/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
