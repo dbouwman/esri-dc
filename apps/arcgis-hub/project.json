@@ -1,0 +1,62 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/arcgis-hub",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/arcgis-hub",
+        "outputPath": "dist/apps/arcgis-hub"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/arcgis-hub"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "arcgis-hub:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "arcgis-hub:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "arcgis-hub:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "arcgis-hub:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/arcgis-hub"],
+      "options": {
+        "jestConfig": "apps/arcgis-hub/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/arcgis-hub/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

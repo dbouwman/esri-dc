@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "arcgis-hub": "apps/arcgis-hub",
+    "arcgis-hub-e2e": "apps/arcgis-hub-e2e"
+  }
+}
